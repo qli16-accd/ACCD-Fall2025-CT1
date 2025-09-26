@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0%;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        header {
+            background-color: lemonchiffon;
+        }
+
+        nav ul{
+            margin: 0%;
+            padding: 20px;
+            list-style: none;
+        }
+
+        nav ul li{
+            margin: 10px auto;
+            text-align: center;
+            border-bottom: 2px solid black;
+            padding-bottom: 15px;
+        } 
+
+        nav ul li:last-child{
+            border-bottom: none;
+        }
+
+        nav ul li a{
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+        }
+
+        .active{
+            font-weight: bold;
+        }
+
+        .cursive{
+            font-style: italic;
+        }
+
+        @media (min-width: 768px){
+            nav ul{
+                display: flex;
+                justify-content: flex-end;
+            }
+            nav ul li{
+                border-bottom: none;
+                margin: 10px;
+                padding: 0;
+            }
+
+        }
+
+        @media (min-width: 900px) {
+            header {
+                background-color: rgb(211, 238, 179);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Work</a></li>
+                <li><a href="active cursive another-class">Blog</a></li>
+                <li><a href="">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <p class="cursive">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nisi nobis exercitationem ab. Consequatur maxime ea laborum rem mollitia! Soluta vel molestiae, minima tempore nihil cum facere exercitationem labore deserunt!</p>
+    </main>
+    <footer></footer>
+</body>
+</html>
