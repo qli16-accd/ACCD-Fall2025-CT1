@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Demo with Transitions</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      transition: all 0.4s ease;
+    }
+
+    header {
+      padding: 15px;
+      transition: background-color 0.4s ease;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 10px auto;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+      padding: 10px;
+      transition: border-color 0.3s ease;
+    }
+
+    nav ul li:last-child {
+      border-bottom: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: inherit;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    /* Hover 下划线动画 */
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: currentColor;
+      transition: width 0.3s ease;
+    }
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .active {
+      font-weight: bold;
+    }
+
+    main {
+      padding: 20px;
+      line-height: 1.6;
+      transition: all 0.4s ease;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      transition: all 0.4s ease;
+    }
+
+    /* ----------- Mobile (<768px) ----------- */
+    body {
+      background: #fffdf5;
+      color: #222;
+      font-size: 16px;
+    }
+    header {
+      background: lemonchiffon;
+    }
+    footer {
+      background: #f4e8c1;
+    }
+
+    /* ----------- Tablet (>=768px) ----------- */
+    @media (min-width: 768px) {
+      body {
+        background: #eef7ff;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 18px;
+      }
+      header {
+        background: #cce1ff;
+      }
+      nav ul {
+        display: flex;
+        justify-content: center;
+      }
+      nav ul li {
+        border: none;
+        margin: 0 15px;
+      }
+      footer {
+        background: #aaccee;
+      }
+    }
+
+    /* ----------- Desktop (>=1024px) ----------- */
+    @media (min-width: 1024px) {
+      body {
+        background: #111;
+        color: #eee;
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 20px;
+      }
+      header {
+        background: #222;
+      }
+      nav ul {
+        display: flex;
+        justify-content: flex-end;
+      }
+      nav ul li a {
+        color: #eee;
+      }
+      main {
+        display: flex;
+        max-width: 1200px;
+        margin: auto;
+        gap: 40px;
+      }
+      main p {
+        flex: 2;
+      }
+      aside {
+        flex: 1;
+        background: #333;
+        padding: 20px;
+        border-radius: 8px;
+        transition: background 0.4s ease;
+      }
+      footer {
+        background: #000;
+        color: #aaa;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="">Home</a></li>
+        <li><a href="">Work</a></li>
+        <li><a href="" class="active">Blog</a></li>
+        <li><a href="">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nisi nobis
+      exercitationem ab. Consequatur maxime ea laborum rem mollitia! Soluta vel
+      molestiae, minima tempore nihil cum facere exercitationem labore deserunt!
+    </p>
+    <p>
+      *I used AI to help me creat this page.
+    </p>
+<aside>
+  <h3>Chiikawa Gallery</h3>
+  <div class="carousel">
+    <div class="carousel-track">
+      <img src="https://www.zalora.com.ph/blog/wp-content/uploads/2025/04/chiikawa.jpg" alt="Image 1" />
+      <img src="https://i0.wp.com/yumetwinsblog.wpcomstaging.com/wp-content/uploads/2024/10/chiikawa-thumbnail.webp?fit=1024%2C625&ssl=1" alt="Image 2" />
+      <img src="https://d1kdu080g8vme4.cloudfront.net/files/topics/31589_ext_24_en_2.jpg?version=1743056864" alt="Image 3" />
+    </div>
+    <button class="carousel-btn prev">‹</button>
+    <button class="carousel-btn next">›</button>
+  </div>
+</aside>
+
+<style>
+  aside {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 250px; 
+  }
+  
+  .carousel-track {
+    display: flex;
+    transition: transform 0.6s ease;
+    will-change: transform;
+    height: 100%; 
+  }
+  
+  .carousel img {
+    width: 100%;
+    height: 100%;       
+    object-fit: cover;  
+    flex-shrink: 0;
+    border-radius: 8px;
+  }
+  
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .carousel-btn.prev { left: 10px; }
+  .carousel-btn.next { right: 10px; }
+</style>
+
+
+<style>
+  aside {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.6s ease;
+    will-change: transform;
+  }
+  .carousel img {
+    width: 100%;
+    flex-shrink: 0;
+    border-radius: 8px;
+  }
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+  }
+  .carousel-btn.prev { left: 10px; }
+  .carousel-btn.next { right: 10px; }
+</style>
+
+<script>
+  const track = document.querySelector(".carousel-track");
+  const slides = Array.from(track.children);
+  const nextButton = document.querySelector(".next");
+  const prevButton = document.querySelector(".prev");
+
+  let index = 0;
+  let interval = setInterval(nextSlide, 3000); // 自动轮播
+
+  function updateSlide() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    updateSlide();
+  }
+
+  function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    updateSlide();
+  }
+
+  nextButton.addEventListener("click", () => {
+    nextSlide();
+    resetTimer();
+  });
+  prevButton.addEventListener("click", () => {
+    prevSlide();
+    resetTimer();
+  });
+
+  // 手指滑动支持
+  let startX = 0;
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+    clearInterval(interval);
+  });
+  track.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+    if (endX - startX > 50) prevSlide();
+    else if (startX - endX > 50) nextSlide();
+    resetTimer();
+  });
+
+  function resetTimer() {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, 3000);
+  }
+</script>
+
+  </main>
+  <footer>
+    <p>© 2025 Creative Technology - Ruby Li</p>
+  </footer>
+</body>
+</html>
