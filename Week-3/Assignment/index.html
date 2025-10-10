@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chiikawa Gallery</title>
+  <style>
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background: #e7fbe7;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #6ba84b;
+    }
+
+    .gallery {
+      margin: 40px auto;
+      max-width: 700px;
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .thumbnails img {
+      width: 100px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .thumbnails img:hover {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    .thumbnails img.active {
+      opacity: 1;
+      border: 3px solid #86c06a;
+    }
+
+    .main-image {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+      height: 400px;
+    }
+
+    .main-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      opacity: 0;
+      transition: opacity 1s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .main-image img.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .controls {
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #86c06a;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      margin: 0 5px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #6ba84b;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 15px 0;
+      font-size: 0.85rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chiikawa Gallery</h1>
+    <nav>
+      <a href="#">Usagi</a>
+      <a href="#">Hachiware</a>
+      <a href="#">Chiikawa</a>
+      <a href="#">Momoga</a>
+    </nav>
+  </header>
+
+  <section class="gallery">
+    <div class="thumbnails">
+      <img src="https://soranews24.com/wp-content/uploads/sites/3/2025/06/1_5cb48d.jpg" alt="thumb1" class="active" />
+      <img src="https://media.timeout.com/images/106259867/image.webp" alt="thumb2" />
+      <img src="https://www.tokyoweekender.com/wp-content/uploads/2025/05/chiikawa-mcdonalds-2025-9-750x472.jpg.webp" alt="thumb3" />
+      <img src="https://www.fujitv.com/wp-content/uploads/2022/07/a777e868fdaed6b18a8ddbcd4cd46a56.jpg" alt="thumb4" />
+    </div>
+
+    <div class="main-image">
+      <img src="https://soranews24.com/wp-content/uploads/sites/3/2025/06/1_5cb48d.jpg" alt="main1" class="active" />
+      <img src="https://media.timeout.com/images/106259867/image.webp" alt="main2" />
+      <img src="https://www.tokyoweekender.com/wp-content/uploads/2025/05/chiikawa-mcdonalds-2025-9-750x472.jpg.webp" alt="main3" />
+      <img src="https://www.fujitv.com/wp-content/uploads/2022/07/a777e868fdaed6b18a8ddbcd4cd46a56.jpg" alt="main4" />
+    </div>
+
+    <div class="controls">
+      <button id="playBtn">▶ Play</button>
+      <button id="pauseBtn">⏸ Pause</button>
+    </div>
+  </section>
+
+  <footer>
+    This webpage was created with assistance from AI.
+  </footer>
+
+  <script>
+    const thumbs = document.querySelectorAll(".thumbnails img");
+    const mains = document.querySelectorAll(".main-image img");
+    let current = 0;
+    let autoSlide;
+
+    function showImage(index) {
+      thumbs.forEach(t => t.classList.remove("active"));
+      mains.forEach(m => m.classList.remove("active"));
+      thumbs[index].classList.add("active");
+      mains[index].classList.add("active");
+      current = index;
+    }
+
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener("click", () => {
+        showImage(i);
+      });
+    });
+
+    function nextImage() {
+      current = (current + 1) % mains.length;
+      showImage(current);
+    }
+
+    document.getElementById("playBtn").addEventListener("click", () => {
+      clearInterval(autoSlide);
+      autoSlide = setInterval(nextImage, 3000);
+    });
+
+    document.getElementById("pauseBtn").addEventListener("click", () => {
+      clearInterval(autoSlide);
+    });
+  </script>
+</body>
+</html>
