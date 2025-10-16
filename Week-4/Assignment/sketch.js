@@ -1,13 +1,10 @@
 let posX, posY;
 let noiseOffsetX = 0;
 let noiseOffsetY = 1000;
-let img, sound;
-let volumeSlider, muteButton; // 🎚️ 新增音量控制元件
-let isMuted = false;
+let img;
 
 function preload() {
   img = loadImage("pics/image11.jpg");
-  sound = loadSound("BGM/chiikawa.mp3");
 }
 
 function setup() {
@@ -15,26 +12,13 @@ function setup() {
   colorMode(HSB, 360, 100, 100);
   posX = width / 2;
   posY = height / 2;
-
-  sound.loop();
-  sound.setVolume(0.5); // 默认音量中等
-
-  // 🎚️ 创建音量滑块
-  volumeSlider = createSlider(0, 1, 0.5, 0.01);
-  volumeSlider.position(20, height + 20);
-  volumeSlider.style('width', '200px');
-
-  // 🔇 创建静音按钮
-  muteButton = createButton('🔇 Mute');
-  muteButton.position(240, height + 18);
-  muteButton.mousePressed(toggleMute);
 }
 
 function draw() {
-  // ✨ 拖尾背景（透明度调小一些）
+  // ✨ 拖尾背景
   background(210, 20, 95, 0.05);
 
-  // 噪声生成非线性速度
+  // 使用噪声生成平滑非线性运动
   let velX = map(noise(noiseOffsetX), 0, 1, -2.5, 2.5);
   let velY = map(noise(noiseOffsetY), 0, 1, -2.5, 2.5);
   noiseOffsetX += 0.008;
@@ -49,11 +33,11 @@ function draw() {
   if (posY < -50) posY = height + 50;
   if (posY > height + 50) posY = -50;
 
-  // 背景图（轻微叠加）
+  // 背景图
   tint(0, 0, 100, 15);
   image(img, 0, 0, width, height);
 
-  // 星星颜色与大小变化（放慢节奏）
+  // 星星颜色与大小变化
   let hue = map(sin(frameCount * 0.01), -1, 1, 180, 320);
   let angle = frameCount * 0.005;
   let size = 60 + sin(frameCount * 0.01) * 6;
@@ -72,14 +56,9 @@ function draw() {
   noStroke();
   fill(hue, 50, 100, 0.05);
   ellipse(posX, posY, size * 3);
-
-  // 🎚️ 动态更新音量
-  if (!isMuted) {
-    sound.setVolume(volumeSlider.value());
-  }
 }
 
-// ⭐ 绘制星星函数
+// ⭐ 绘制五角星
 function drawStar(x, y, radius1, radius2, npoints) {
   let angle = TWO_PI / npoints;
   let halfAngle = angle / 2.0;
@@ -93,16 +72,4 @@ function drawStar(x, y, radius1, radius2, npoints) {
     vertex(sx, sy);
   }
   endShape(CLOSE);
-}
-
-// 🔇 静音切换函数
-function toggleMute() {
-  if (isMuted) {
-    sound.setVolume(volumeSlider.value());
-    muteButton.html('🔇 Mute');
-  } else {
-    sound.setVolume(0);
-    muteButton.html('🔊 Unmute');
-  }
-  isMuted = !isMuted;
 }
