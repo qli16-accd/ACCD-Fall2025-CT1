@@ -15,10 +15,8 @@ function setup() {
 }
 
 function draw() {
-  // ✨ 拖尾背景
   background(210, 20, 95, 0.05);
 
-  // 使用噪声生成平滑非线性运动
   let velX = map(noise(noiseOffsetX), 0, 1, -2.5, 2.5);
   let velY = map(noise(noiseOffsetY), 0, 1, -2.5, 2.5);
   noiseOffsetX += 0.008;
@@ -27,22 +25,18 @@ function draw() {
   posX += velX;
   posY += velY;
 
-  // 边界循环
   if (posX < -50) posX = width + 50;
   if (posX > width + 50) posX = -50;
   if (posY < -50) posY = height + 50;
   if (posY > height + 50) posY = -50;
 
-  // 背景图
   tint(0, 0, 100, 15);
   image(img, 0, 0, width, height);
 
-  // 星星颜色与大小变化
   let hue = map(sin(frameCount * 0.01), -1, 1, 180, 320);
   let angle = frameCount * 0.005;
   let size = 60 + sin(frameCount * 0.01) * 6;
 
-  // 🌟 白色描边 + 彩色星星
   push();
   translate(posX, posY);
   rotate(angle);
@@ -52,13 +46,11 @@ function draw() {
   drawStar(0, 0, size * 0.4, size, 5);
   pop();
 
-  // 🌠 发光拖尾
   noStroke();
   fill(hue, 50, 100, 0.05);
   ellipse(posX, posY, size * 3);
 }
 
-// ⭐ 绘制五角星
 function drawStar(x, y, radius1, radius2, npoints) {
   let angle = TWO_PI / npoints;
   let halfAngle = angle / 2.0;
