@@ -1,4 +1,5 @@
 let angleSlider;
+let swingSlider;
 
 function setup() {
   createCanvas(600, 600);
@@ -7,7 +8,8 @@ function setup() {
   noStroke();
 
   createP("Adjust Arc Angle:");
-  angleSlider = createSlider(0, PI / 2, PI / 8, 0.01); 
+  angleSlider = createSlider(0, PI / 4, PI / 8, 0.01); 
+  swingSlider = createSlider(0, 1, 0.1, 0.01); 
 }
 
 function draw() {
@@ -21,7 +23,7 @@ function draw() {
     let radius = 60 + i * 20;
     let arcWidth = 20;
 
-    let swing = sin(t * 1.5 - i * 0.25) * 0.3;
+    let swing = sin(t * 1.5 - i * 0.25) * swingSlider.value();
 
     let startAngle = PI + arcOffset * 0.3 + swing;
     let endAngle = TWO_PI - arcOffset * 0.3 - swing;
