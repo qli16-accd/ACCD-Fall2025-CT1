@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminar Readings Reflections</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind自定义颜色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        quote: '#f0f4f8',
+                        response: '#ffffff',
+                        accent: '#3b82f6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Georgia', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Reading Reflections</h1>
+            <p class="text-gray-600">Insights and responses to seminar readings</p>
+            <p class="text-gray-300">* I used AI to help me to create this page.</p>
+        </header>
+
+        <!-- 第一篇阅读材料 -->
+        <section class="mb-16 bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="p-6 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-900">Reading 1</h2>
+                <a href="https://programmingdesignsystems.com/introduction/" target="_blank" 
+                   class="inline-flex items-center text-accent hover:underline mt-1">
+                    <i class="fa fa-external-link mr-1"></i> Access reading material
+                </a>
+            </div>
+            
+            
+            <!-- 第一组引用和感想 -->
+            <div class="flex flex-col md:flex-row border-b border-gray-100">
+                <!-- 引用部分 -->
+                <div class="md:w-1/2 p-6 bg-quote border-r border-gray-200">
+                    <div class="flex items-start mb-2">
+                        <i class="fa fa-quote-left text-accent/50 text-3xl mr-3 mt-1"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Quote 1</h3>
+                    </div>
+                    <blockquote class="italic text-gray-700 ml-10">
+                        "code enables designers to do things they couldn't do before. Variations of a design can be tested much faster during the prototyping phase, and randomization can be used to reveal designs that the designer would never have created with a pencil."
+                    </blockquote>
+                </div>
+                
+                <!-- 感想部分 -->
+                <div class="md:w-1/2 p-6 bg-response">
+                    <div class="flex items-center mb-2">
+                        <i class="fa fa-comment text-accent mr-2"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Response 1</h3>
+                    </div>
+                    <div class="text-gray-700">
+                        This made me realize that code is not only a "implementation tool", but also a "catalyst for creativity". In traditional design, modifying one version may take half a day to draw, while code can quickly generate multiple variants.
+                        <br><br>
+                        (For example, the plug-in grasshopper in Rhino)
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二组引用和感想 -->
+            <div class="flex flex-col md:flex-row border-b border-gray-100">
+                <div class="md:w-1/2 p-6 bg-quote border-r border-gray-200">
+                    <div class="flex items-start mb-2">
+                        <i class="fa fa-quote-left text-accent/50 text-3xl mr-3 mt-1"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Quote 2</h3>
+                    </div>
+                    <blockquote class="italic text-gray-700 ml-10">
+                        "Digital products all share a common trait: They are created with programming languages."
+                    </blockquote>
+                </div>
+                
+                <div class="md:w-1/2 p-6 bg-response">
+                    <div class="flex items-center mb-2">
+                        <i class="fa fa-comment text-accent mr-2"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Response 2</h3>
+                    </div>
+                    <div class="text-gray-700">
+                        This sentence clearly points out the core difference between digital design and traditional print design. It explains why more and more designers need to learn coding now—without understanding programming, it's hard to truly control the logic of digital design.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第三组引用和感想 -->
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 p-6 bg-quote border-r border-gray-200">
+                    <div class="flex items-start mb-2">
+                        <i class="fa fa-quote-left text-accent/50 text-3xl mr-3 mt-1"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Quote 3</h3>
+                    </div>
+                    <blockquote class="italic text-gray-700 ml-10">
+                        "There is a need for educational material that teaches the fundamentals of graphic design in a modern way."
+                    </blockquote>
+                </div>
+                
+                <div class="md:w-1/2 p-6 bg-response">
+                    <div class="flex items-center mb-2">
+                        <i class="fa fa-comment text-accent mr-2"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Response 3</h3>
+                    </div>
+                    <div class="text-gray-700">
+                        This hits the gap in current design education. Many textbooks either only teach traditional design basics or only programming skills, but few combine them and teach how to evaluate digital design. This book fills that gap well.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二篇阅读材料 -->
+        <section class="mb-16 bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="p-6 border-b border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-900">Reading 2</h2>
+                <a href="https://hci.stanford.edu/courses/cs247/2012/readings/WhatDoPrototypesPrototype.pdf" target="_blank" 
+                   class="inline-flex items-center text-accent hover:underline mt-1">
+                    <i class="fa fa-external-link mr-1"></i> Access reading material
+                </a>
+            </div>
+            
+            <!-- 第一组引用和感想 -->
+            <div class="flex flex-col md:flex-row border-b border-gray-100">
+                <div class="md:w-1/2 p-6 bg-quote border-r border-gray-200">
+                    <div class="flex items-start mb-2">
+                        <i class="fa fa-quote-left text-accent/50 text-3xl mr-3 mt-1"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Quote 1</h3>
+                    </div>
+                    <blockquote class="italic text-gray-700 ml-10">
+                        "Is a brick a prototype? The answer depends on how it is used. If it is used to represent the weight and scale of some future artifact, then it certainly is: it prototypes the weight and scale of the artifact."
+                    </blockquote>
+                </div>
+                
+                <div class="md:w-1/2 p-6 bg-response">
+                    <div class="flex items-center mb-2">
+                        <i class="fa fa-comment text-accent mr-2"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Response 1</h3>
+                    </div>
+                    <div class="text-gray-700">
+                        This completely breaks the stereotype that prototypes must be sophisticated models. It reminds me that the value of a prototype lies in its purpose, not its form—even a simple object like a brick can be a useful prototype if used correctly.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二组引用和感想 -->
+            <div class="flex flex-col md:flex-row border-b border-gray-100">
+                <div class="md:w-1/2 p-6 bg-quote border-r border-gray-200">
+                    <div class="flex items-start mb-2">
+                        <i class="fa fa-quote-left text-accent/50 text-3xl mr-3 mt-1"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Quote 2</h3>
+                    </div>
+                    <blockquote class="italic text-gray-700 ml-10">
+                        "Current terminology for describing prototypes centers on attributes of prototypes themselves, such as what tool was used to create them, and how refined-looking or -behaving they are. Such terms can be distracting."
+                    </blockquote>
+                </div>
+                
+                <div class="md:w-1/2 p-6 bg-response">
+                    <div class="flex items-center mb-2">
+                        <i class="fa fa-comment text-accent mr-2"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Response 2</h3>
+                    </div>
+                    <div class="text-gray-700">
+                        This highlights a common communication problem in design teams. Focusing on terms like "high-fidelity" or "paper prototype" misses the point—what matters is what specific design question the prototype is intended to answer.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第三组引用和感想 -->
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 p-6 bg-quote border-r border-gray-200">
+                    <div class="flex items-start mb-2">
+                        <i class="fa fa-quote-left text-accent/50 text-3xl mr-3 mt-1"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Quote 3</h3>
+                    </div>
+                    <blockquote class="italic text-gray-700 ml-10">
+                        "these three prototypes were developed almost in parallel. They were built by different design team members during the early stages of the project. No single prototype could have represented the design of the future artifact at that time."
+                    </blockquote>
+                </div>
+                
+                <div class="md:w-1/2 p-6 bg-response">
+                    <div class="flex items-center mb-2">
+                        <i class="fa fa-comment text-accent mr-2"></i>
+                        <h3 class="font-bold text-lg text-gray-800">Response 3</h3>
+                    </div>
+                    <div class="text-gray-700">
+                        This challenges the idea that design must proceed sequentially. For complex products, developing multiple focused prototypes in parallel is more efficient, allowing different aspects of the design to inform each other.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-gray-100 py-6 text-center text-gray-600">
+        <p>Seminar Reading Reflections &copy; 2025</p>
+    </footer>
+</body>
+</html>
