@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sunlight - Plant Growth</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
+  <style>
+    body {
+      background-color: #efefef;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 22px;
+      color: #333;
+    }
+    .uml {
+      width: 80%;
+      max-width: 800px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin: 10px auto 30px;
+      display: block;
+    }
+    canvas {
+      display: block;
+      margin: 0 auto 20px;
+      border: 2px solid #aaa;
+      border-radius: 6px;
+    }
+    p.note {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sunlight — Plant Growth System</h1>
+
+  <!-- UML 图片 -->
+  <img class="uml" src="UML.png" alt="System UML Diagram">
+
+  <!-- p5.js 画布将自动出现在这里 -->
+  <script src="sketch.js"></script>
+
+  <!-- 底部文字说明 -->
+  <p class="note">
+    Click on the grey ground to plant plants. Plants will grow towards the sun.
+  </p>
+</body>
+</html>
