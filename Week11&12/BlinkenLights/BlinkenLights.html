@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LED Rhythm Interface – Project Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --panel: #ffffff;
+      --accent: #4b5563;
+      --accent-soft: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #d1d5db;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 32px auto 48px;
+      padding: 0 16px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Media board */
+
+    .media-board {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 16px 16px 18px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .media-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+
+    .media-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+    }
+
+    .media-hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+    }
+
+    .media-item {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--accent-soft);
+      padding: 8px;
+    }
+
+    .media-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .media-frame {
+      border-radius: 8px;
+      overflow: hidden;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 140px;
+    }
+
+    .media-frame img,
+    .media-frame video {
+      width: 100%;
+      height: 100%;
+      max-height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .media-placeholder {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 12px;
+      text-align: center;
+    }
+
+    /* Content sections */
+
+    section {
+      background: var(--panel);
+      border-radius: 16px;
+      padding: 16px 16px 18px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.06);
+    }
+
+    section h2 {
+      font-size: 1.05rem;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 0 0 8px;
+      font-size: 0.96rem;
+    }
+
+    ul {
+      margin: 4px 0 4px 1.1rem;
+      padding-left: 0;
+      font-size: 0.96rem;
+    }
+
+    li + li {
+      margin-top: 2px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9rem;
+      padding: 1px 5px;
+      border-radius: 999px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      color: #111827;
+    }
+
+    .mono-block {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9rem;
+      background: #f9fafb;
+      border-radius: 8px;
+      padding: 8px 10px;
+      border: 1px solid #e5e7eb;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        margin-top: 24px;
+      }
+
+      section,
+      .media-board {
+        padding: 14px 14px 16px;
+        border-radius: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>LED Rhythm Interface</h1>
+      <div class="subtitle">
+        Ruby Li - Creative Tech 1 - 2025 Fall
+      </div>
+      <div class="subtitle">
+        * I used ChatGPT to help me.
+      </div>
+    </header>
+
+    <!-- Media board: put your local images / videos here -->
+    <section class="media-board">
+      <div class="media-header">
+        <div class="media-title">Process Media Board</div>
+      </div>
+      <div class="media-grid">
+        <!-- Image 1 -->
+        <div class="media-item">
+          <div class="media-label">Breadboard wiring photo 1</div>
+          <div class="media-frame">
+            <!--
+              Put your image file in the same folder as this HTML,
+              then change "wiring.jpg" to your actual file name.
+            -->
+            <img src="version1.jpg" alt="1st version of breadboard wiring of the LED circuit" />
+          </div>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="media-item">
+          <div class="media-label">Breadboard wiring photo 2</div>
+          <div class="media-frame">
+            <img src="version2.jpg" alt="Close-up of the 5 LEDs" />
+          </div>
+        </div>
+
+        <!-- Video -->
+        <div class="media-item">
+          <div class="media-label">Testing video</div>
+          <div class="media-frame">
+            <!--
+              Put your video file in the same folder,
+              then change "demo.mp4" to your actual video file name.
+            -->
+            <video controls src="version2.mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concept & Idea -->
+    <section id="concept">
+      <h2>Concept &amp; Idea</h2>
+      <p>
+        I decided to use five differently colored LEDs to create a simple “light rhythm instrument.”
+      </p>
+      <p>
+        The potentiometer acts as a physical controller to adjust the speed of the rhythm.
+      </p>
+    </section>
+
+    <!-- Design Goals -->
+    <section id="goals">
+      <h2>Design Goals</h2>
+      <ul>
+        <li>Make five LEDs light up one after another (chasing / running-light effect).</li>
+        <li>Use a potentiometer to control the speed of the pattern.</li>
+        <li>Ensure each LED can be independently controlled through a separate GPIO pin.</li>
+      </ul>
+    </section>
+
+    <!-- Materials -->
+    <section id="materials">
+      <h2>Materials</h2>
+      <ul>
+        <li>Adafruit ESP32 Feather</li>
+        <li>Five LEDs (different colors)</li>
+        <li>Five current-limiting resistors (470 &Omega; each)</li>
+        <li>One adjustable blue potentiometer</li>
+        <li>Breadboard and jumper wires</li>
+      </ul>
+    </section>
+
+    <!-- Wiring -->
+    <section id="wiring">
+      <h2>Wiring Process</h2>
+      <p>
+        Each LED is wired with its own resistor so that the current for every
+        LED is limited independently and the ESP32 pins are protected.
+      </p>
+      <ul>
+        <li>
+          All LED cathodes (short legs) are connected to a common ground row on
+          the breadboard, which is then connected to a GND pin on the ESP32.
+        </li>
+        <li>
+          Each LED anode (long leg) is connected through a resistor to a
+          different GPIO pin:
+          <span class="mono-block">14, 27, 12, 33, 15</span>.
+        </li>
+        <li>
+          The potentiometer has three pins:
+          <ul>
+            <li>One side goes to <code>3.3V</code>.</li>
+            <li>The other side goes to <code>GND</code>.</li>
+            <li>The middle pin goes to GPIO <code>36</code> (ADC input).</li>
+          </ul>
+        </li>
+        <li>
+          Each GPIO was tested individually to confirm it could turn its LED on
+          and off before adding the final chasing pattern logic.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Programming Logic -->
+    <section id="programming">
+      <h2>Programming Logic</h2>
+      <p>
+        The code implements a simple chasing pattern controlled by the
+        potentiometer:
+      </p>
+      <ul>
+        <li>Read the potentiometer value from 0–4095 using <code>analogRead()</code>.</li>
+        <li>
+          Map this value to a delay time using <code>map()</code>, so the knob
+          controls the speed of the chase.
+        </li>
+        <li>
+          Use an index variable <code>chaseIndex</code> to track which LED
+          should be on.
+        </li>
+        <li>
+          In each loop:
+          <ul>
+            <li>Turn all LEDs off.</li>
+            <li>Turn on only the LED at <code>chaseIndex</code>.</li>
+            <li>Wait for the mapped delay time.</li>
+            <li>Move <code>chaseIndex</code> to the next LED (and wrap from 4 back to 0).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <p>Core pin configuration in the sketch:</p>
+      <pre class="mono-block">
+const int ledPins[5] = {14, 27, 12, 33, 15};
+const int potPin = 36; 
+      </pre>
+
+      <p>Core loop behavior:</p>
+      <pre class="mono-block">
+int potValue = analogRead(potPin);          // 0–4095
+int delayTime = map(potValue, 0, 4095, 60, 600);
+
+for (int i = 0; i &lt; 5; i++) {
+  digitalWrite(ledPins[i], LOW);            // turn all off
+}
+
+digitalWrite(ledPins[chaseIndex], HIGH);    // light current LED
+delay(delayTime);                           // wait based on knob position
+
+chaseIndex++;
+if (chaseIndex &gt;= 5) {
+  chaseIndex = 0;                           // loop back to the first LED
+}
+      </pre>
+    </section>
+
+    <!-- Issues & Fixes -->
+    <section id="issues">
+      <h2>Issues &amp; Fixes</h2>
+      <ul>
+        <li>
+          <strong>Only two LEDs were lighting up at first virsion.</strong><br />
+          This was caused by incorrect pin connections and trying to share
+          resistors between LEDs. The fix was to give each LED its own resistor
+          and make sure they were wired specifically to GPIO
+          <span class="mono-block">14, 27, 12, 33, 15</span>.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Final Result -->
+    <section id="result">
+      <h2>Final Result</h2>
+      <p>
+        The final circuit is a five-LED chasing rhythm controlled by an ESP32
+        Feather Huzzah32. The potentiometer behaves like a tempo control: by
+        turning the knob, I can smoothly adjust the speed of the pattern from
+        very slow to very fast. This simple setup transforms a row of LEDs into
+        a small, performable light-based interface.
+      </p>
+    </section>
+  </div>
+</body>
+</html>
