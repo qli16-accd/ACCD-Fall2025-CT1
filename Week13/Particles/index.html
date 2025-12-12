@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Particle Image Controller – Project Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --panel: #ffffff;
+      --accent: #374151;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #d1d5db;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* --- MEDIA BOARD (fixed alignment) --- */
+
+    .media-board {
+      background: var(--panel);
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 28px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    .media-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      align-items: stretch; /* 让同一行高度对齐 */
+    }
+
+    .media-item {
+      background: #eceff1;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;  /* 垂直居中内容 */
+      align-items: center;
+    }
+
+    .media-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .media-frame {
+      width: 100%;
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      aspect-ratio: 3 / 4; /* 统一比例，大概接近你的照片+竖视频 */
+    }
+
+    .media-frame img,
+    .media-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* 保持比例，不裁切 */
+      display: block;
+    }
+
+    /* --- CONTENT SECTIONS --- */
+
+    section {
+      background: var(--panel);
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      margin-top: 0;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    p, ul { font-size: 0.95rem; }
+    ul { margin-left: 1.2rem; }
+
+    @media (max-width: 640px) {
+      .page {
+        margin-top: 24px;
+      }
+      section,
+      .media-board {
+        padding: 14px;
+        border-radius: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <header>
+    <h1>PARTICLE IMAGE CONTROLLER</h1>
+    <div class="subtitle">Ruby Li – Creative Tech 1 – 2025 Fall</div>
+    <div class="subtitle">* I used ChatGPT to help me.</div>
+  </header>
+
+  <!-- MEDIA BOARD -->
+  <section class="media-board">
+    <div class="media-title">PROCESS MEDIA BOARD</div>
+    <div class="media-grid">
+
+      <!-- wiring -->
+      <div class="media-item">
+        <div class="media-label">Final breadboard wiring</div>
+        <div class="media-frame">
+          <img src="FinalLooking.JPG" alt="Final wiring setup" />
+        </div>
+      </div>
+
+      <!-- sensor bug -->
+      <div class="media-item">
+        <div class="media-label">Ultrasonic sensor issue</div>
+        <div class="media-frame">
+          <img src="SensorBug.png" alt="Sensor bug screenshot" />
+        </div>
+      </div>
+
+      <!-- final demo -->
+      <div class="media-item">
+        <div class="media-label">Final particle demo (1080×1920)</div>
+        <div class="media-frame">
+          <video controls src="FinalTest.MP4"></video>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Concept -->
+  <section>
+    <h2>Concept</h2>
+    <p>
+      For this project, I turned the ESP32 into a multi-channel controller for a particle visualization in Processing.
+      The ultrasonic sensor controls how “tight” or “scattered” the particles are, the potentiometer controls particle size,
+      and the button switches between three shapes (snowflake, tree, star).
+    </p>
+  </section>
+
+  <!-- Wiring -->
+  <section>
+    <h2>Hardware Setup</h2>
+    <p>The system uses three inputs:</p>
+    <ul>
+      <li><strong>Ultrasonic sensor:</strong> TRIG → 12, ECHO (via voltage divider) → 13</li>
+      <li><strong>Potentiometer:</strong> middle pin → A1</li>
+      <li><strong>Button:</strong> → A2 using INPUT_PULLUP</li>
+    </ul>
+    <p>
+      I added a resistor divider (10k) on the ECHO pin so the 5V signal becomes safe for the ESP32.
+    </p>
+  </section>
+
+  <!-- Code Logic -->
+  <section>
+    <h2>Programming</h2>
+    <p>
+      The ESP32 sends data in this format:
+      <code>distanceVal,potVal,shapeIndex</code>.
+    </p>
+    <p>
+      In Processing:
+    </p>
+    <ul>
+      <li><strong>distanceVal</strong> → controls particle gather vs. scatter</li>
+      <li><strong>potVal</strong> → changes particle radius</li>
+      <li><strong>shapeIndex</strong> → switches between snowflake / tree / star</li>
+    </ul>
+  </section>
+
+  <!-- Issues -->
+  <section>
+    <h2>Issues &amp; Fixes</h2>
+    <ul>
+      <li>The ultrasonic sensor originally read only “0.9 cm”. Supplying it with 5V and add a resistor to prevent damage to the components fixed the issue.</li>
+      <li>Processing window went off-screen, so I manually set its position in code.</li>
+    </ul>
+  </section>
+
+  <!-- Result -->
+  <section>
+    <h2>Final Result</h2>
+    <p>
+      The final interaction feels like sculpting particles with my hand. When my hand gets closer, the particles gather
+      into a clear shape; when I move away, they scatter across the screen like sand. 
+    </p>
+  </section>
+
+</div>
+</body>
+</html>
