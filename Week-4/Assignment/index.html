@@ -14,6 +14,116 @@
     <script src="libraries/p5.sound.min.js"></script>
   </head>
 
+<style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f3f3f3;
+      color: #222;
+    }
+
+    .page-wrap {
+      max-width: 960px;
+      margin: 24px auto 40px;
+      padding: 0 16px 40px;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      border-radius: 8px;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    .notes-section {
+      margin: 24px 0 8px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .notes-section h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .notes-section p {
+      margin: 0 0 8px;
+    }
+
+    .sketch-gallery {
+      margin: 24px 0 8px;
+    }
+
+    .sketch-gallery h2 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .sketch-strip {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 10px 4px 10px 0;
+      scroll-snap-type: x mandatory;
+    }
+
+    .sketch-strip img {
+      height: 180px;
+      flex: 0 0 auto;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #ddd;
+      scroll-snap-align: start;
+    }
+
+    .sketch-hint {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .sketches {
+      margin: 20px 0 12px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <section class="notes-section">
+      <h2>Process & Notes</h2>
+      <p>
+        I created a web page featuring non-linear movement and twinkling star effects on the background of an image. <strong>And you can also drag the star!</strong> I also tried the function of displaying a small logo on the browser's display box for this web page.
+      </p>
+    </section>
+
+    <section class="sketch-gallery">
+      <h2>Sketches</h2>
+      <div class="sketch-strip">
+        <img src="1.png" alt="Sketch 1">
+        <img src="2.png" alt="Sketch 2">
+      </div>
+    </section>
+
+    <p class="sketches">
+      At first, neither the images nor the background music appeared on the webpage.After checking the console and file structure, I realized the problem was caused by incorrect file paths.I mistakenly included an extra folder name in the path, even though the files were already in the same directory as the sketch file.After fixing the relative paths, all assets loaded correctly.
+      (But later I thought the background music was a bit noisy, so I removed this function.)
+    </p>
+    
+    <p class="sketches">
+      During development, I adjusted the layout and visual balance of the webpage multiple times.
+      However, I did not save screenshots of these intermediate visual changes.Because of this, I am unable to include the visual debugging process in the documentation.(Sorry! T-T)
+    </p>
+
   <body>
     <script src="sketch.js"></script>
   </body>
