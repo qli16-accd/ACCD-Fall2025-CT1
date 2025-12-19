@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Multi-Channel Music Controller – Project Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --panel: #ffffff;
+      --accent: #374151;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #d1d5db;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 3.2vw, 2.2rem);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      white-space: nowrap;
+    }
+
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* --- MEDIA BOARD --- */
+    .media-board {
+      background: var(--panel);
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 28px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    }
+
+    .media-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .media-item {
+      background: #eceff1;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .media-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .media-frame {
+      width: 100%;
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      aspect-ratio: 3 / 4; /* good for vertical photos + 1080x1920 video */
+    }
+
+    .media-frame img,
+    .media-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* --- CONTENT SECTIONS --- */
+    section.content {
+      background: var(--panel);
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      margin-top: 0;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    p, ul { font-size: 0.95rem; }
+    ul { margin-left: 1.2rem; }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9rem;
+      padding: 1px 6px;
+      border-radius: 999px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    @media (max-width: 640px) {
+      .page { margin-top: 24px; }
+      section.content, .media-board { padding: 14px; border-radius: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <header>
+    <h1>MULTI-CHANNEL MUSIC CONTROLLER</h1>
+    <h1></h1>
+    <div class="subtitle">Ruby Li – Creative Tech 1 – 2025 Fall</div>
+    <div class="subtitle">* I used ChatGPT to help me.</div>
+  </header>
+
+  <!-- MEDIA BOARD -->
+  <section class="media-board">
+    <div class="media-title">Process Media Board</div>
+    <div class="media-grid">
+
+      <div class="media-item">
+        <div class="media-label">Final breadboard wiring</div>
+        <div class="media-frame">
+          <img src="IMG_4037.JPG" alt="Final wiring setup" />
+        </div>
+      </div>
+
+      <div class="media-item">
+        <div class="media-label">Process</div>
+        <div class="media-frame">
+          <img src="3.png" alt="Process" />
+        </div>
+      </div>
+
+      <div class="media-item">
+        <div class="media-label">Final demo video (1080×1920)</div>
+        <div class="media-frame">
+          <video controls src="IMG_4036.MP4"></video>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Concept -->
+  <section class="content">
+    <h2>Concept</h2>
+    <p>
+      I built a mini “Christmas tree music controller” using an ESP32 and 5 buttons.
+      Each button triggers a different sound in Processing and also creates a particle “burst” on a Christmas tree made of particles.
+    </p>
+  </section>
+
+  <!-- System -->
+  <section class="content">
+    <h2>System Overview</h2>
+    <ul>
+      <li><strong>Input:</strong> 5 physical buttons on ESP32</li>
+      <li><strong>Communication:</strong> Serial (115200)</li>
+      <li><strong>Output:</strong> Sound playback + particle burst visuals</li>
+    </ul>
+  </section>
+
+  <!-- Hardware -->
+  <section class="content">
+    <h2>Hardware Setup</h2>
+    <p>
+      I wired five buttons to ESP32 pins and read them as digital inputs.
+      The ESP32 continuously sends 5 values like:
+      <code>b1,b2,b3,b4,b5</code>
+    </p>
+    <p>
+      In Processing, I also added a simple mapping step, because the physical button order didn’t perfectly match the serial order at first.
+    </p>
+  </section>
+
+  <!-- Programming -->
+  <section class="content">
+    <h2>Programming</h2>
+    <ul>
+      <li><strong>ESP32:</strong> reads button states and prints 5 comma-separated values every frame.</li>
+      <li><strong>Processing:</strong> parses the incoming line, detects button “press events”, then:</li>
+      <ul>
+        <li>plays a sound file (drum sample)</li>
+        <li>applies a small particle burst force near a preset point on the tree</li>
+      </ul>
+      <li>The tree is built from colored particles (mostly green, with red/yellow decorations and a star on top).</li>
+    </ul>
+  </section>
+
+  <!-- Interaction -->
+  <section class="content">
+    <h2>Interaction</h2>
+    <p>
+      The screen has five burst trigger zones arranged like:
+      <code>1 / 2 3 / 4 5</code>.
+      Pressing a button causes particles in that area to scatter briefly, then smoothly return to the tree shape.
+    </p>
+  </section>
+
+  <!-- Issues -->
+  <section class="content">
+    <h2>Issues &amp; Fixes</h2>
+    <ul>
+      <li><strong>Some buttons did nothing:</strong> the burst point was outside the tree shape. I updated the burst centers to be inside the tree area.</li>
+      <li><strong>Button order felt “reversed”:</strong> I added a mapping array in Processing to match physical buttons with visual zones.</li>
+      <li><strong>Tree layout:</strong> I adjusted canvas ratio and tree position so it fits better in a vertical window.</li>
+    </ul>
+  </section>
+
+  <!-- Result -->
+  <section class="content">
+    <h2>In the End</h2>
+    <p>
+      Merry Christmas in advance! HO HO HO~🎅🎄🎁
+    </p>
+  </section>
+
+</div>
+</body>
+</html>
